@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <meta charset="UTF-8">
-    <title>Home</title>
+<meta charset="UTF-8">
+<title>Home</title>
 </head>
 <body>
 <ul>
     <li th:each="note : ${notes}" th:text="${note.title}"></li>
 </ul>
-<form action="note/add" method="post">
-    <input text="text" title="title" placeholder="Title">
+<form action="/note/add" method="post">
+    <input type="text" name="title" placeholder="Title">
     <button>Submit</button>
 </form>
-
 </body>
 </html>

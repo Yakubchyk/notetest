@@ -13,9 +13,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Note {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String title;
-
+    private Long id;
+    private String title;
 }

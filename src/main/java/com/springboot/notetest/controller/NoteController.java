@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -17,12 +18,12 @@ import java.util.List;
 public class NoteController {
 
     @Autowired
-    NoteRepository noteRepository;
+    private NoteRepository noteRepository;
 
     @GetMapping
-    public String note(Note note, Model model) {
-        List<Note> notes = noteRepository.findAll();
-        model.addAttribute("notes", notes);
+    public String note(Model model) {
+        List<Note> all = noteRepository.findAll();
+        model.addAttribute("notes", all);
         return "note";
     }
 
@@ -33,9 +34,8 @@ public class NoteController {
     }
 
     @PostMapping("/remove")
-    public String remove(Note note) {
-        noteRepository.delete(note);
+    public String add(@RequestParam Long id) {
+        noteRepository.deleteById(id);
         return "redirect:/note";
     }
-
 }
